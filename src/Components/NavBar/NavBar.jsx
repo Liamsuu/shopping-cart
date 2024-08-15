@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const NavWrapper = styled.div`
-  background-color: #e0e7ff; // change after
+  background-color: #f9fafb;
   height: 5rem;
 
   display: flex;
@@ -10,6 +10,8 @@ const NavWrapper = styled.div`
   align-items: center;
   padding-left: 1.5rem;
   padding-right: 3rem;
+  padding-bottom: 0.5rem;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 `;
 
 const NavLogo = styled.img`
@@ -28,16 +30,23 @@ const NavSearchInput = styled.input`
   flex: 1;
 `;
 
+const CartIcon = styled.img`
+  height: 2rem;
+`;
+
 export default function NavBar() {
   return (
     <NavWrapper>
-      <NavLogo src="/public/logo.svg" />
+      <Link to="/">
+        <NavLogo src="/public/logo.svg" alt="logo" />
+      </Link>
       <NavSearchWrapper>
         <NavSearchInput />
         <button type="submit"></button>
       </NavSearchWrapper>
       <Link to="cart">
-        <img src="" alt="cart" />
+        {/* maybe change the colour later of the shopping cart */}
+        <CartIcon src="/public/shopping_cart.svg" alt="cart" />
       </Link>
     </NavWrapper>
   );
