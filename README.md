@@ -1,8 +1,8 @@
-# React + Vite
+# My Shopping Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a basic shopping website, it's purpose is to test the React JS skillset that I have learnt so far:
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Routing
+- Fetching Data with useEffect
+- React Testing
+- Using CSS in JS with styled-components

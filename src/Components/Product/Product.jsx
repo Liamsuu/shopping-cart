@@ -22,13 +22,24 @@ const ProductPrice = styled.p`
   flex: 1;
 `;
 
+const AddToCartBtn = styled.button`
+  width: 6rem;
+  padding: 0.5rem 0;
+  border-radius: 5px;
+  border: 1px solid black;
+  &:hover {
+    background-color: #9ca3af;
+  }
+`;
+
 export default function Product(props) {
   return (
     <ProductWrapper>
       <ProductImage src={props.productImg} alt="product" />
       <ProductName>{props.productName}</ProductName>
       <ProductPrice>${props.productPrice}</ProductPrice>
-      <button>Add to cart</button>
+      <AddToCartBtn>Add to cart</AddToCartBtn>
+      {/* <button>Add to cart</button> */}
     </ProductWrapper>
   );
 }

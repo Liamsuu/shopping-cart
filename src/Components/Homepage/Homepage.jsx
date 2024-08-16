@@ -15,8 +15,6 @@ const ProductListings = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  /* remove background colour after, just for development */
-  /* background-color: green; */
   width: 70rem;
   gap: 1rem;
 `;
