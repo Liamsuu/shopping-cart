@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { PropTypes } from "prop-types";
 
 const NavWrapper = styled.div`
   background-color: #f9fafb;
@@ -34,7 +35,18 @@ const CartIcon = styled.img`
   height: 2rem;
 `;
 
-export default function NavBar() {
+const CartItemNumber = styled.p`
+  position: relative;
+  right: 5.2rem;
+  bottom: 1rem;
+  background-color: #8b5cf6;
+  padding: 0.1rem 0.4rem;
+  border-radius: 50%;
+  color: #f9fafb;
+  font-weight: bold;
+`;
+
+export default function NavBar(props) {
   return (
     <NavWrapper>
       <Link to="/">
@@ -48,6 +60,11 @@ export default function NavBar() {
         {/* maybe change the colour later of the shopping cart */}
         <CartIcon src="/public/shopping_cart.svg" alt="cart" />
       </Link>
+      <CartItemNumber>{props.itemsInCart}</CartItemNumber>
     </NavWrapper>
   );
 }
+
+NavBar.propTypes = {
+  itemsInCart: PropTypes.number,
+};

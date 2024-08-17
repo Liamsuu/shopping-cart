@@ -24,6 +24,8 @@ function Homepage() {
   const [productsData, setProductsData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [productsInBasket, setProductsInBasket] = useState([]);
+  let numOfItems = 0;
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products", { mode: "cors" })
@@ -50,40 +52,62 @@ function Homepage() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>A network error was encountered</p>;
 
+  productsInBasket.map(() => {
+    numOfItems++;
+  });
+
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <NavBar />
+      <NavBar itemsInCart={numOfItems} />
       <HomepageMainWrapper>
         <ProductListings>
           <Product
             productImg={productsData[0].image}
             productName={productsData[0].title}
             productPrice={productsData[0].price}
+            productsInBasket={productsInBasket}
+            setProductsInBasket={setProductsInBasket}
+            productObject={productsData[0]}
           />
           <Product
             productImg={productsData[1].image}
             productName={productsData[1].title}
             productPrice={productsData[1].price}
+            productsInBasket={productsInBasket}
+            setProductsInBasket={setProductsInBasket}
+            productObject={productsData[1]}
           />
           <Product
             productImg={productsData[2].image}
             productName={productsData[2].title}
             productPrice={productsData[2].price}
+            productsInBasket={productsInBasket}
+            setProductsInBasket={setProductsInBasket}
+            productObject={productsData[2]}
           />
           <Product
             productImg={productsData[3].image}
             productName={productsData[3].title}
             productPrice={productsData[3].price}
+            productsInBasket={productsInBasket}
+            setProductsInBasket={setProductsInBasket}
+            productObject={productsData[3]}
           />
           <Product
             productImg={productsData[4].image}
             productName={productsData[4].title}
             productPrice={productsData[4].price}
+            productsInBasket={productsInBasket}
+            setProductsInBasket={setProductsInBasket}
+            productObject={productsData[4]}
           />
           <Product
             productImg={productsData[5].image}
             productName={productsData[5].title}
             productPrice={productsData[5].price}
+            productsInBasket={productsInBasket}
+            setProductsInBasket={setProductsInBasket}
+            productObject={productsData[5]}
           />
         </ProductListings>
       </HomepageMainWrapper>

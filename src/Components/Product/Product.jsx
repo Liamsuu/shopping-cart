@@ -38,8 +38,16 @@ export default function Product(props) {
       <ProductImage src={props.productImg} alt="product" />
       <ProductName>{props.productName}</ProductName>
       <ProductPrice>${props.productPrice}</ProductPrice>
-      <AddToCartBtn>Add to cart</AddToCartBtn>
-      {/* <button>Add to cart</button> */}
+      <AddToCartBtn
+        onClick={() => {
+          props.setProductsInBasket([
+            ...props.productsInBasket,
+            props.productObject,
+          ]);
+        }}
+      >
+        Add to cart
+      </AddToCartBtn>
     </ProductWrapper>
   );
 }
@@ -48,4 +56,7 @@ Product.propTypes = {
   productImg: PropTypes.string,
   productName: PropTypes.string,
   productPrice: PropTypes.number,
+  productsInBasket: PropTypes.array,
+  productObject: PropTypes.object,
+  setProductsInBasket: PropTypes.func,
 };
