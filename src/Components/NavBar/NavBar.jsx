@@ -50,15 +50,15 @@ export default function NavBar(props) {
   return (
     <NavWrapper>
       <Link to="/">
-        <NavLogo src="/public/logo.svg" alt="logo" />
+        <NavLogo src="/logo.svg" alt="logo" />
       </Link>
       <NavSearchWrapper>
         <NavSearchInput />
         <button type="submit"></button>
       </NavSearchWrapper>
-      <Link to="cart">
+      <Link to="cart" state={{ itemsInCart: props.itemsInCart }}>
         {/* maybe change the colour later of the shopping cart */}
-        <CartIcon src="/public/shopping_cart.svg" alt="cart" />
+        <CartIcon src="/shopping_cart.svg" alt="cart" />
       </Link>
       <CartItemNumber>{props.itemsInCart}</CartItemNumber>
     </NavWrapper>
