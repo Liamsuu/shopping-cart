@@ -30,11 +30,11 @@ function Homepage() {
   const [productsInBasket, setProductsInBasket] = useState([]);
 
   useEffect(() => {
-    // this will only change after coming back from cart route to homepage route, initially should be undefined.
-    if (location.state.itemsInCart !== undefined) {
+    // this will only change after coming back from cart route to homepage route, initially should be null.
+    if (location.state !== null) {
       setProductsInBasket(location.state.itemsInCart);
     }
-  }, [location.state.itemsInCart]);
+  }, [location.state]);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products", { mode: "cors" })
