@@ -3,10 +3,12 @@ import { useLocation } from "react-router-dom";
 
 export default function ShoppingCart() {
   const location = useLocation();
-  const itemsInCart = location.state?.itemsInCart;
+  const itemsInCart = location.state.itemsInCart;
+  const numItemsInCart = location.state.numItemsInCart;
+
   return (
     <>
-      <NavBar itemsInCart={itemsInCart} />
+      <NavBar itemsInCart={itemsInCart} numItemsInCart={numItemsInCart} />
     </>
   );
 }

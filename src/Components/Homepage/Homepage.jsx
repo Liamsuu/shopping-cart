@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import NavBar from "../NavBar/NavBar";
 import Product from "../Product/Product";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 
 const HomepageMainWrapper = styled.div`
   display: flex;
@@ -18,14 +19,22 @@ const ProductListings = styled.div`
   width: 70rem;
   gap: 1rem;
 `;
-// the grid boxes are much larger than container figure out how to make them size based on container size later FIX IT
 
 function Homepage() {
+  const location = useLocation();
+  console.log(location);
+
   const [productsData, setProductsData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [productsInBasket, setProductsInBasket] = useState([]);
-  let numOfItems = 0;
+
+  useEffect(() => {
+    // this will only change after coming back from cart route to homepage route, initially should be undefined.
+    if (location.state.itemsInCart !== undefined) {
+      setProductsInBasket(location.state.itemsInCart);
+    }
+  }, [location.state.itemsInCart]);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products", { mode: "cors" })
@@ -52,13 +61,12 @@ function Homepage() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>A network error was encountered</p>;
 
-  productsInBasket.map(() => {
-    numOfItems++;
-  });
-
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <NavBar itemsInCart={numOfItems} />
+      <NavBar
+        numItemsInCart={productsInBasket.length}
+        itemsInCart={productsInBasket}
+      />
       <HomepageMainWrapper>
         <ProductListings>
           <Product

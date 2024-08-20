@@ -49,22 +49,34 @@ const CartItemNumber = styled.p`
 export default function NavBar(props) {
   return (
     <NavWrapper>
-      <Link to="/">
+      <Link
+        to="/"
+        state={{
+          numItemsInCart: props.numItemsInCart,
+          itemsInCart: props.itemsInCart,
+        }}
+      >
         <NavLogo src="/logo.svg" alt="logo" />
       </Link>
       <NavSearchWrapper>
         <NavSearchInput />
         <button type="submit"></button>
       </NavSearchWrapper>
-      <Link to="cart" state={{ itemsInCart: props.itemsInCart }}>
-        {/* maybe change the colour later of the shopping cart */}
+      <Link
+        to="cart"
+        state={{
+          numItemsInCart: props.numItemsInCart,
+          itemsInCart: props.itemsInCart,
+        }}
+      >
         <CartIcon src="/shopping_cart.svg" alt="cart" />
       </Link>
-      <CartItemNumber>{props.itemsInCart}</CartItemNumber>
+      <CartItemNumber>{props.numItemsInCart}</CartItemNumber>
     </NavWrapper>
   );
 }
 
 NavBar.propTypes = {
-  itemsInCart: PropTypes.number,
+  numItemsInCart: PropTypes.number,
+  itemsInCart: PropTypes.array,
 };
