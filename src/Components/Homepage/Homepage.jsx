@@ -30,7 +30,7 @@ function Homepage() {
   const [productsInBasket, setProductsInBasket] = useState([]);
 
   useEffect(() => {
-    // this will only change after coming back from cart route to homepage route, initially should be null.
+    // this will only change after coming back from cart route to homepage route, initially should be null. its not used on first load.
     if (location.state !== null) {
       setProductsInBasket(location.state.itemsInCart);
     }
