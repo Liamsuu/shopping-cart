@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { PropTypes } from "prop-types";
+import { v4 as uuidv4 } from "uuid";
 
 const ProductWrapper = styled.div`
   display: flex;
@@ -33,6 +34,7 @@ const AddToCartBtn = styled.button`
 `;
 
 export default function Product(props) {
+  props.productObject.key = uuidv4();
   return (
     <ProductWrapper>
       <ProductImage src={props.productImg} alt="product" />

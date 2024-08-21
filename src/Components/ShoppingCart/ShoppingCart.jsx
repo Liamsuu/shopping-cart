@@ -31,12 +31,17 @@ export default function ShoppingCart() {
       <BasketListWrapper>
         <BasketList>
           <h2 style={{ marginRight: "auto" }}>Basket</h2>
-          {/* replace basketproduct, check if anything is in itemsincart arr, if so iterate through it creating a new basketproduct component for each*/}
-          <BasketProduct
-            productImg={itemsInCart[0].image}
-            productName={itemsInCart[0].title}
-            productPrice={itemsInCart[0].price}
-          />
+
+          {itemsInCart.map((productObj) => {
+            return (
+              <BasketProduct
+                key={productObj.key}
+                productImg={productObj.image}
+                productName={productObj.title}
+                productPrice={productObj.price}
+              />
+            );
+          })}
         </BasketList>
       </BasketListWrapper>
     </>
