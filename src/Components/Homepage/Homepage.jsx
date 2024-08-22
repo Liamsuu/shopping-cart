@@ -14,9 +14,8 @@ const HomepageMainWrapper = styled.div`
 
 const ProductListings = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  width: 70rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100rem;
   gap: 1rem;
 `;
 

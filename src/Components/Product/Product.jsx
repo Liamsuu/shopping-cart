@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 const ProductWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  background-color: #f9fafb;
   padding: 3rem;
 `;
 

@@ -4,14 +4,12 @@ import { PropTypes } from "prop-types";
 
 const NavWrapper = styled.div`
   background-color: #f9fafb;
-  height: 5rem;
-
+  height: 4rem;
   display: flex;
   gap: 5rem;
   align-items: center;
   padding-left: 1.5rem;
   padding-right: 3rem;
-  padding-bottom: 0.5rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 `;
 

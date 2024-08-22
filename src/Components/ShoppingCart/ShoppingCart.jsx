@@ -36,12 +36,17 @@ function calculateQuantityOfItems(productObjArr) {
 
 export default function ShoppingCart() {
   const location = useLocation();
+  if (location.state === null) {
+    // sets default empty values if the user comes to this url route from a route other than homepage. the homepage normally sets these values
+    location.state = { numOfItemsInCart: 0, itemsInCart: [] };
+  }
   const [itemsInCart, setItemsInCart] = useState(
     JSON.parse(JSON.stringify(location.state.itemsInCart))
   );
 
-  const numItemsInCart = calculateQuantityOfItems(itemsInCart);
   let totalCost = 0;
+
+  const numItemsInCart = calculateQuantityOfItems(itemsInCart);
 
   return (
     <>
