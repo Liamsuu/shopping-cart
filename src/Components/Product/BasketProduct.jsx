@@ -47,6 +47,25 @@ const ProductPrice = styled.p`
   margin-left: auto;
 `;
 
+function increaseQuantity(productList, selectedProduct, setNewList) {
+  const index = productList.findIndex((object) => {
+    return object.id === selectedProduct.id;
+  });
+  let newArr = JSON.parse(JSON.stringify(productList));
+  newArr[index].quantity++;
+  setNewList(newArr);
+}
+
+function decreaseQuantity(productList, selectedProduct, setNewList) {
+  const index = productList.findIndex((object) => {
+    return object.id === selectedProduct.id;
+  });
+  if (productList[index].quantity > 1) {
+    let newArr = JSON.parse(JSON.stringify(productList));
+    newArr[index].quantity--;
+    setNewList(newArr);
+  }
+}
 export default function BasketProduct(props) {
   return (
     <BasketProductWrapper>
@@ -54,6 +73,30 @@ export default function BasketProduct(props) {
       <BasketProductDetailContainer>
         <h3>{props.productName}</h3>
         <p>Quantity: {props.productObj.quantity}</p>
+        <div style={{ display: "flex", gap: "0.2rem", paddingLeft: "0.5rem" }}>
+          <button
+            onClick={() =>
+              increaseQuantity(
+                props.productList,
+                props.productObj,
+                props.setNewProductList
+              )
+            }
+          >
+            +
+          </button>
+          <button
+            onClick={() =>
+              decreaseQuantity(
+                props.productList,
+                props.productObj,
+                props.setNewProductList
+              )
+            }
+          >
+            -
+          </button>
+        </div>
         <ProductRemove
           onClick={() => {
             // find index of product object in list with same id
