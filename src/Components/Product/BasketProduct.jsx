@@ -54,7 +54,21 @@ export default function BasketProduct(props) {
       <BasketProductDetailContainer>
         <h3>{props.productName}</h3>
         <p>Quantity: {props.productObj.quantity}</p>
-        <ProductRemove onClick={{}}>Remove</ProductRemove>
+        <ProductRemove
+          onClick={() => {
+            // find index of product object in list with same id
+            const index = props.productList.findIndex((object) => {
+              return object.id === props.productObj.id;
+            });
+            // copy array, remove item from copied array
+            let newArr = JSON.parse(JSON.stringify(props.productList));
+            newArr.splice(index, 1);
+            // reset the state with new copied list without product that was removed
+            props.setNewProductList(newArr);
+          }}
+        >
+          Remove
+        </ProductRemove>
       </BasketProductDetailContainer>
       <BasketPriceDetailContainer>
         <ProductPrice>
@@ -71,5 +85,5 @@ BasketProduct.propTypes = {
   productPrice: PropTypes.number,
   productList: PropTypes.array,
   productObj: PropTypes.object,
-  setItemsInCart: PropTypes.func,
+  setNewProductList: PropTypes.func,
 };

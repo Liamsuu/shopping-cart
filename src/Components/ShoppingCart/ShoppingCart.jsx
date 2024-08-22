@@ -25,11 +25,22 @@ const TotalCost = styled.p`
   margin-left: auto;
 `;
 
+function calculateQuantityOfItems(productObjArr) {
+  let numOfItems = 0;
+  productObjArr.forEach((product) => {
+    numOfItems += product.quantity;
+  });
+
+  return numOfItems;
+}
+
 export default function ShoppingCart() {
   const location = useLocation();
-  const [itemsInCart, setItemsInCart] = useState(location.state.itemsInCart);
-  // const itemsInCart = location.state.itemsInCart;
-  const numItemsInCart = location.state.numItemsInCart;
+  const [itemsInCart, setItemsInCart] = useState(
+    JSON.parse(JSON.stringify(location.state.itemsInCart))
+  );
+
+  const numItemsInCart = calculateQuantityOfItems(itemsInCart);
   let totalCost = 0;
 
   return (
