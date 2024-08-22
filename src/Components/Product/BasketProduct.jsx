@@ -57,7 +57,9 @@ export default function BasketProduct(props) {
         <ProductRemove onClick={{}}>Remove</ProductRemove>
       </BasketProductDetailContainer>
       <BasketPriceDetailContainer>
-        <ProductPrice>${props.productPrice}</ProductPrice>
+        <ProductPrice>
+          ${props.productPrice * props.productObj.quantity}
+        </ProductPrice>
       </BasketPriceDetailContainer>
     </BasketProductWrapper>
   );

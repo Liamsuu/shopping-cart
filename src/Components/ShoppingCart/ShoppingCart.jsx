@@ -39,7 +39,7 @@ export default function ShoppingCart() {
         <BasketList>
           <h2 style={{ marginRight: "auto" }}>Basket</h2>
           {itemsInCart.map((productObj) => {
-            totalCost += productObj.price;
+            totalCost += productObj.price * productObj.quantity;
             return (
               <BasketProduct
                 key={productObj.key}
