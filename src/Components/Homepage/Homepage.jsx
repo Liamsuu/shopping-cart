@@ -45,6 +45,9 @@ function Homepage() {
         return response.json();
       })
       .then((response) => {
+        for (let x = 0; x < 6; x++) {
+          response[x].quantity = 0;
+        }
         setProductsData([
           response[0],
           response[1],

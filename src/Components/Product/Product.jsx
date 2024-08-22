@@ -6,7 +6,7 @@ const ProductWrapper = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid black;
-  padding: 1rem;
+  padding: 3rem;
 `;
 
 const ProductImage = styled.img`
@@ -35,6 +35,7 @@ const AddToCartBtn = styled.button`
 
 export default function Product(props) {
   props.productObject.key = uuidv4();
+
   return (
     <ProductWrapper>
       <ProductImage src={props.productImg} alt="product" />
@@ -42,10 +43,24 @@ export default function Product(props) {
       <ProductPrice>${props.productPrice}</ProductPrice>
       <AddToCartBtn
         onClick={() => {
-          props.setProductsInBasket([
-            ...props.productsInBasket,
-            props.productObject,
-          ]);
+          if (
+            props.productsInBasket.find(
+              (product) => product.id === props.productObject.id
+            ) === undefined
+          ) {
+            props.productObject.quantity = props.productObject.quantity + 1;
+            props.setProductsInBasket([
+              ...props.productsInBasket,
+              props.productObject,
+            ]);
+          } else {
+            const copyArr = [...props.productsInBasket];
+            const updatedObject = copyArr.find(
+              (product) => product.id === props.productObject.id
+            );
+            updatedObject.quantity = updatedObject.quantity + 1;
+            props.setProductsInBasket(copyArr);
+          }
         }}
       >
         Add to cart

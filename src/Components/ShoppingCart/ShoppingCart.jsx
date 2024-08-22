@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import NavBar from "../NavBar/NavBar";
 import BasketProduct from "../Product/BasketProduct";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 const BasketListWrapper = styled.div`
@@ -20,10 +21,16 @@ const BasketList = styled.div`
   border-radius: 5px;
 `;
 
+const TotalCost = styled.p`
+  margin-left: auto;
+`;
+
 export default function ShoppingCart() {
   const location = useLocation();
-  const itemsInCart = location.state.itemsInCart;
+  const [itemsInCart, setItemsInCart] = useState(location.state.itemsInCart);
+  // const itemsInCart = location.state.itemsInCart;
   const numItemsInCart = location.state.numItemsInCart;
+  let totalCost = 0;
 
   return (
     <>
@@ -31,17 +38,23 @@ export default function ShoppingCart() {
       <BasketListWrapper>
         <BasketList>
           <h2 style={{ marginRight: "auto" }}>Basket</h2>
-
           {itemsInCart.map((productObj) => {
+            totalCost += productObj.price;
             return (
               <BasketProduct
                 key={productObj.key}
+                productList={itemsInCart}
                 productImg={productObj.image}
                 productName={productObj.title}
                 productPrice={productObj.price}
+                productObj={productObj}
+                setNewProductList={setItemsInCart}
               />
             );
           })}
+          <TotalCost>
+            <b>Subtotal:</b> ${totalCost}
+          </TotalCost>
         </BasketList>
       </BasketListWrapper>
     </>

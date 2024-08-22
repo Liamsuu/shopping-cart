@@ -53,7 +53,7 @@ export default function BasketProduct(props) {
       <BasketProductImg src={props.productImg} />
       <BasketProductDetailContainer>
         <h3>{props.productName}</h3>
-        <ProductRemove>Remove</ProductRemove>
+        <ProductRemove onClick={{}}>Remove</ProductRemove>
       </BasketProductDetailContainer>
       <BasketPriceDetailContainer>
         <ProductPrice>${props.productPrice}</ProductPrice>
@@ -66,4 +66,7 @@ BasketProduct.propTypes = {
   productImg: PropTypes.string,
   productName: PropTypes.string,
   productPrice: PropTypes.number,
+  productList: PropTypes.array,
+  productObj: PropTypes.object,
+  setItemsInCart: PropTypes.func,
 };
