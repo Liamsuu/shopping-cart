@@ -20,6 +20,15 @@ const ProductListings = styled.div`
   gap: 1rem;
 `;
 
+function calculateQuantityOfItems(productObjArr) {
+  let numOfItems = 0;
+  productObjArr.forEach((product) => {
+    numOfItems += product.quantity;
+  });
+
+  return numOfItems;
+}
+
 function Homepage() {
   const location = useLocation();
   console.log(location);
@@ -28,6 +37,7 @@ function Homepage() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [productsInBasket, setProductsInBasket] = useState([]);
+  let totalQuantity = calculateQuantityOfItems(productsInBasket);
 
   useEffect(() => {
     // this will only change after coming back from cart route to homepage route, initially should be null. its not used on first load.
@@ -63,13 +73,9 @@ function Homepage() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>A network error was encountered</p>;
-
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <NavBar
-        numItemsInCart={productsInBasket.length}
-        itemsInCart={productsInBasket}
-      />
+      <NavBar numItemsInCart={totalQuantity} itemsInCart={productsInBasket} />
       <HomepageMainWrapper>
         <ProductListings>
           <Product
