@@ -53,6 +53,7 @@ export default function BasketProduct(props) {
       <BasketProductImg src={props.productImg} />
       <BasketProductDetailContainer>
         <h3>{props.productName}</h3>
+        <p>Quantity: {props.productObj.quantity}</p>
         <ProductRemove onClick={{}}>Remove</ProductRemove>
       </BasketProductDetailContainer>
       <BasketPriceDetailContainer>
