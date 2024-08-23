@@ -6,9 +6,10 @@ import { useLocation } from "react-router-dom";
 
 const HomepageMainWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   flex: 1;
-  justify-content: center;
-  padding-top: 5rem;
+  align-items: center;
+  padding-top: 2rem;
   padding-bottom: 5rem;
 `;
 
@@ -17,6 +18,24 @@ const ProductListings = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   width: 100rem;
   gap: 1rem;
+`;
+
+const MainPicture = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  height: 40rem;
+  width: 100%;
+  background-image: url("/mainbanner.jpg");
+  background-size: cover;
+  margin-bottom: 1rem;
+`;
+
+const MainPictureText = styled.p`
+  margin-right: 20%;
+  font-family: "bebas-neue";
+  color: #f9fafb;
+  font-size: 8rem;
 `;
 
 function calculateQuantityOfItems(productObjArr) {
@@ -76,6 +95,9 @@ function Homepage() {
     <div style={{ display: "flex", flexDirection: "column" }}>
       <NavBar numItemsInCart={totalQuantity} itemsInCart={productsInBasket} />
       <HomepageMainWrapper>
+        <MainPicture>
+          <MainPictureText>Stay Unique</MainPictureText>
+        </MainPicture>
         <ProductListings>
           <Product
             productImg={productsData[0].image}

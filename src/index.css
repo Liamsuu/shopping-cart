@@ -3,6 +3,11 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+@font-face {
+  font-family: "bebas-neue";
+  src: url(/BebasNeue-Regular.ttf);
+}
+
 body {
   background-color: #f3f4f6;
   padding: 0;
