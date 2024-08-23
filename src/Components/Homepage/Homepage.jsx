@@ -49,7 +49,6 @@ function calculateQuantityOfItems(productObjArr) {
 
 function Homepage() {
   const location = useLocation();
-  console.log(location);
 
   const [productsData, setProductsData] = useState(null);
   const [error, setError] = useState(null);

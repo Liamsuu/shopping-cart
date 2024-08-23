@@ -6,8 +6,7 @@ import { useLocation } from "react-router-dom";
 
 const BasketListWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   padding-top: 5rem;
 `;
 
@@ -19,6 +18,22 @@ const BasketList = styled.div`
   width: 40%;
   padding: 0rem 1rem 2rem 1rem;
   border-radius: 5px;
+`;
+
+const CheckoutWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  margin-left: 1rem;
+  height: max-content;
+  width: 10vw;
+  background-color: #f9fafb;
+`;
+const CheckoutButton = styled.button`
+  height: fit-content;
+  padding: 0.4rem;
+  margin-bottom: 1rem;
 `;
 
 const TotalCost = styled.p`
@@ -72,6 +87,10 @@ export default function ShoppingCart() {
             <b>Subtotal:</b> ${totalCost}
           </TotalCost>
         </BasketList>
+        <CheckoutWrapper>
+          <h3>Subtotal: ${totalCost}</h3>
+          <CheckoutButton>Proceeed to checkout</CheckoutButton>
+        </CheckoutWrapper>
       </BasketListWrapper>
     </>
   );
